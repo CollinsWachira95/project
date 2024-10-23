@@ -53,147 +53,7 @@ body {
   margin: 0 auto 3rem;
 }
 
-/* Testimonial Cards */
-.testimonial-card {
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin: 1rem;
-  text-align: center;
-  display: inline-block;
-  vertical-align: top;
-  max-width: 300px;
-}
 
-.testimonial-card img {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.testimonial-card p {
-  font-size: 1rem;
-  color: #4c4c4c;
-  margin-bottom: 1rem;
-}
-
-.test-stars-container {
-  color: #fe9e0d;
-  margin-bottom: 1rem;
-}
-
-.testimonial-card h2 {
-  font-size: 1.2rem;
-  color: #484848;
-}
-
-/* Button Styling for Testimonials */
-.secondary-button {
-  padding: 1rem 2.5rem;
-  background-color: #fe9e0d;
-  border: none;
-  border-radius: 5rem;
-  font-size: 1.1rem;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  display: inline-block;
-  margin-top: 2rem;
-}
-
-.secondary-button:hover {
-  background-color: #e48f0f;
-}
-
-/* Responsive Design */
-@media (max-width: 800px) {
-  .test-section-wrapper {
-    padding: 2rem 1rem;
-  }
-
-  .primary-heading {
-    font-size: 2rem;
-  }
-
-  .primary-text {
-    font-size: 1rem;
-    max-width: 90%;
-  }
-
-  .testimonial-card {
-    max-width: 90%;
-    margin: 1rem auto;
-  }
-}
-.test-section-wrapper {
-  padding: 4rem 2rem;
-  background-color: #f2f2f2;
-}
-
-.test-section-top {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.primary-subheading {
-  font-weight: 600;
-  color: #fe9e0d;
-  font-size: 1.2rem;
-}
-
-.primary-heading {
-  font-size: 2.5rem;
-  color: #4c4c4c;
-  margin: 0.5rem 0;
-}
-
-.primary-text {
-  font-size: 1.2rem;
-  color: #6a6a6a;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.testimonials-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.test-section-bottom {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 2rem;
-  margin: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.testimonial-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.test-stars-container {
-  color: #fe9e0d;
-  margin: 1rem 0;
-}
-
-.test-section-bottom h2 {
-  font-size: 1.2rem;
-  color: #4c4c4c;
-  margin-top: 0.5rem;
-}
 .form-container {
   background-color: #ffffff;
   padding: 2rem;
@@ -258,78 +118,6 @@ body {
 
 .submission-item p {
   margin: 0.5rem 0 0;
-}
-.footer-wrapper {
-  background-color: #2c2c2c;
-  color: #ffffff;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-section-one {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.footer-logo-container {
-  margin-bottom: 1rem;
-}
-
-.footer-logo {
-  width: 120px; /* Adjust as needed */
-  height: auto;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-icon {
-  color: #ffffff;
-  font-size: 1.5rem;
-  transition: color 0.3s;
-}
-
-.footer-icon:hover {
-  color: #fe9e0d; /* Hover color */
-}
-
-.footer-section-two {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.footer-section-columns {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.footer-column-title {
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.footer-section-columns span {
-  color: #d0d0d0;
-}
-
-.footer-section-columns span:hover {
-  color: #fe9e0d; /* Hover color */
-  cursor: pointer;
-}
-.contact-page-wrapper {
-  background-color: #f4f4f4;
-  padding: 4rem 2rem;
-  text-align: center;
-  min-height: 100vh;
 }
 
 .contact-header {
@@ -429,8 +217,10 @@ body {
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
+  text-decoration: none;
   color: white;
   transition: 0.2s;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -537,14 +327,14 @@ img {
 .nav-link {
   margin-right: 2rem;
   text-decoration: none;
-  color: white;
+  color: goldenrod;
   font-size: 1.1rem;
   font-weight: 600;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #fe9e0d; /* Change color on hover */
+  color: white; /* Change color on hover */
 }
 
 .primary-button {
@@ -695,7 +485,7 @@ img {
 
 .form-input, .form-textarea {
   padding: 1rem;
-  border: 2px solid #fe9e0d;
+  border: 2px solid wheat;
   border-radius: 5rem;
   margin-bottom: 1rem;
   transition: border-color 0.3s;
@@ -847,4 +637,87 @@ img {
     flex-direction: column; 
     align-items: center; 
   }
+}
+
+/* Category List */
+.category-list {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+/* Category Button */
+.category-button {
+  padding: 10px 20px;
+  border: 2px solid #4CAF50;
+  background-color: white;
+  color: #4CAF50;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category-button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.category-button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Recipe List Styling */
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.recipe-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: center;
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-card h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.recipe-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.search-bar {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #4CAF50;
 }

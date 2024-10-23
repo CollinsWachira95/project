@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom"; 
 import MainBackground from "../Components/Assets/about-background.png";
 import MainBackgroundImage from "../Components/Assets/about-background-image.png";
 import { BsFillPlayCircleFill } from "react-icons/bs";
@@ -26,10 +26,10 @@ const Main = () => {
           FOODIE is a vibrant and intuitive recipe app designed to ignite your culinary creativity.
         </p>
         <div className="main-buttons-container">
-          <Link to="/about">
-            <button className="secondary-button">Let's Wip It</button>
+          <Link to="/about"> 
+            <button className="secondary-button">Let's Wip It {""}</button>
           </Link>
-          <button className="watch-video-button" onClick={() => window.open('https://www.youtube.com', '_blank')}>
+          <button className="watch-video-button" onClick={() => window.open('https://www.youtube.com/watch?v=dPBXgwJD35E', '_blank')}>
             <BsFillPlayCircleFill /> Watch Video
           </button>
         </div>

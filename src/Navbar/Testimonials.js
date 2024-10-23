@@ -57,7 +57,7 @@ const Testimonial = () => {
             <p>"The best recipe app out there! A must-have for every home cook!"</p>
             <span>- Sarah Williams</span>
           </div>
-          {/* Add more comments if needed */}
+          
           <div className="best-comment">
             <p>"FOODIE has inspired me to cook every day. Thank you!"</p>
             <span>- Michael Lee</span>

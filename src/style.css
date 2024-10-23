@@ -38,7 +38,7 @@
   .navbar-links-container a {
     margin-right: 2rem;
     text-decoration: none;
-    color: white;
+    color: goldenrod;
     font-size: 1.1rem;
     font-weight: 600;
   }
@@ -159,7 +159,7 @@
     background-color: #f6f6f6;
   }
   
-  /* About Section Wrapper */
+  About Section Wrapper
   .about-section-wrapper {
     margin: 5rem auto;
     padding: 2rem;
@@ -389,7 +389,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: goldenrod;
+  color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -401,10 +401,10 @@
 }
 
 .hero-subtitle {
-  font-size: 2.0rem;
+  font-size: 2.5rem;
   margin-top: 1rem;
   text-align: center;
-  color: gold;
+  color:#fe9e0d ;
 }
 
 .about-section-wrapper {
@@ -429,7 +429,7 @@
 
 .primary-heading {
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #2c3e50;
+  color: #4c4c4c;
   max-width: 90%;
   margin: 0 auto 1rem;
 }
