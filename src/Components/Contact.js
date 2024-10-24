@@ -7,10 +7,10 @@ function Contact({ chefId, onCommentSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Call the onCommentSubmit function passed from the About component
+    
     onCommentSubmit(chefId, comment);
 
-    // Clear the input fields after submission
+    
     setEmail('');
     setComment('');
   };
@@ -32,7 +32,7 @@ function Contact({ chefId, onCommentSubmit }) {
         />
         <textarea
           placeholder='Your comment...'
-          className='contact-textarea'
+          className='contact-input'
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           required

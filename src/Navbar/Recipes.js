@@ -1,95 +1,95 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import "../style.css";
 import Form from "../Components/Form";
 
-const mockCategories = ["All", "Italian", "Desserts", "Asian", "Vegan"]; // Mock categories
-const mockRecipes = [
-  {
-    id: 1,
-    title: "Spaghetti Carbonara",
-    image: "https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhZ2hldHRpJTIwY2FyYm9uYXJhfGVufDB8fDB8fHww",
-    ingredients: "Pasta, Eggs, Parmesan, Bacon",
-    directions: "Cook pasta. Mix with eggs and cheese. Add bacon.",
-    category: "Italian",
-    likes: 0,
-    comments: [],
-  },
-  {
-    id: 2,
-    title: "Tiramisu",
-    image: "https://images.unsplash.com/photo-1542326237-94b1c5a538d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGlyYW1pc3V8ZW58MHx8MHx8fDA%3D",
-    ingredients: "Ladyfingers, Coffee, Mascarpone, Cocoa",
-    directions: "Layer ladyfingers with coffee and mascarpone. Dust with cocoa.",
-    category: "Desserts",
-    likes: 0,
-    comments: [],
-  },
-  // Add more mock recipes as needed
-];
-
 function Recipe() {
-  const [recipes, setRecipes] = useState(mockRecipes);
+  const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [newComment, setNewComment] = useState("");
+  const [activeRecipeId, setActiveRecipeId] = useState(null); // For comments
+  const [comment, setComment] = useState(""); // Comment input
 
-  // Handle like button click
-  const handleLike = (recipeId) => {
-    setRecipes((prevRecipes) =>
-      prevRecipes.map((recipe) =>
-        recipe.id === recipeId
-          ? { ...recipe, likes: recipe.likes + 1 }
-          : recipe
-      )
-    );
+  useEffect(() => {
+    fetch("https://server-v95o.onrender.com/recipes", { headers: "Auth" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setRecipes(data);
+        } else if (data.recipes) {
+          setRecipes(data.recipes);
+        }
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, []);
+
+  // Function to handle likes
+  const handleLike = async (recipeId) => {
+    try {
+      const response = await fetch(`/api/recipes/${recipeId}/likes`, {
+        method: "POST",
+      });
+
+      if (response.ok) {
+        alert("You liked this recipe!");
+        // Optionally, update likes in the state for real-time feedback
+      } else {
+        alert("Failed to like the recipe.");
+      }
+    } catch (error) {
+      console.error("Error liking recipe:", error);
+    }
   };
 
-  // Handle comment submit
-  const handleCommentSubmit = (recipeId) => {
-    setRecipes((prevRecipes) =>
-      prevRecipes.map((recipe) =>
-        recipe.id === recipeId
-          ? {
-              ...recipe,
-              comments: [...recipe.comments, newComment],
-            }
-          : recipe
-      )
-    );
-    setNewComment(""); // Clear comment input after submission
+  // Function to handle comment submission
+  const handleCommentSubmit = async (recipeId, comment) => {
+    try {
+      const response = await fetch(`/api/recipes/${recipeId}/comments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: comment }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message); // Show success message
+        // Optionally, update comments in the state for real-time feedback
+        setComment(""); // Clear comment input after submission
+      } else {
+        alert("Failed to add comment.");
+      }
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
   };
 
-  // Filter recipes based on category and search query
-  const filteredRecipes = recipes.filter((recipe) => {
-    const matchesCategory =
-      selectedCategory === "All" || recipe.category === selectedCategory;
-    const matchesQuery =
-      query === "" || recipe.title.toLowerCase().includes(query.toLowerCase());
+  // Set the active recipe for commenting
+  const handleCommentButtonClick = (recipeId) => {
+    setActiveRecipeId(recipeId); // Set the selected recipe
+  };
 
-    return matchesCategory && matchesQuery;
-  });
+  const filteredRecipes = Array.isArray(recipes)
+    ? recipes.filter((recipe) => {
+        if (query === "") {
+          return true;
+        } else if (recipe.title.toLowerCase().includes(query.toLowerCase())) {
+          return true;
+        }
+        return false;
+      })
+    : [];
 
   return (
     <div className="recipe-app">
       <NavBar />
-
-      {/* Category filter */}
-      <div className="category-list">
-        {mockCategories.map((category) => (
-          <button
-            key={category}
-            className={`category-button ${
-              selectedCategory === category ? "active" : ""
-            }`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Search bar */}
       <div className="search-bar">
         <input
           type="text"
@@ -98,8 +98,6 @@ function Recipe() {
           onChange={(event) => setQuery(event.target.value)}
         />
       </div>
-
-      {/* Recipe list */}
       <div className="recipe-list">
         {filteredRecipes.map((recipe) => (
           <div key={recipe.id} className="recipe-card">
@@ -108,32 +106,42 @@ function Recipe() {
             <p>Ingredients: {recipe.ingredients}</p>
             <p>Directions: {recipe.directions}</p>
 
-            {/* Likes and comments */}
-            <div className="like-comment-section">
-              <button onClick={() => handleLike(recipe.id)}>Like</button>
-              <span>{recipe.likes} Likes</span>
+            {/* Like button */}
+            <button
+              className="like-button"
+              onClick={() => handleLike(recipe.id)}
+            >
+              Like
+            </button>
+
+            {/* Comment button */}
+            <button
+              className="comment-button"
+              onClick={() => handleCommentButtonClick(recipe.id)}
+            >
+              Comment
+            </button>
+
+            {/* Comment Form */}
+            {activeRecipeId === recipe.id && (
               <div className="comment-section">
-                <h4>Comments:</h4>
-                <ul>
-                  {recipe.comments.map((comment, index) => (
-                    <li key={index}>{comment}</li>
-                  ))}
-                </ul>
-                <input
-                  type="text"
-                  placeholder="Add a comment"
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="Add a comment..."
+                  rows="3"
                 />
-                <button onClick={() => handleCommentSubmit(recipe.id)}>
+                <button
+                  className="submit-comment"
+                  onClick={() => handleCommentSubmit(recipe.id, comment)}
+                >
                   Submit Comment
                 </button>
               </div>
-            </div>
+            )}
           </div>
         ))}
       </div>
-
       <Form />
     </div>
   );

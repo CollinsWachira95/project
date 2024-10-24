@@ -91,7 +91,7 @@ function About() {
 
   const handleCommentButtonClick = (chefId) => {
     setActiveChefId(chefId);
-    navigate('/contact'); // Set the active chef for commenting
+    navigate('/contact'); 
   };
 
   return (
