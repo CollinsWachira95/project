@@ -1,5 +1,5 @@
-# Recipe Management System
-The Recipe Management System is a web application designed for users and chefs to interact through recipes. Users can like and comment on recipes, while chefs can manage their own recipes with full CRUD (Create, Read, Update, Delete) capabilities. The system also includes user authentication and form validation, ensuring a secure and user-friendly experience.
+# Foodie
+Foodie is a web application designed for users and chefs to interact through recipes. Users can like and comment on recipes, while chefs can manage their own recipes with full CRUD (Create, Read, Update, Delete) capabilities. The system also includes user authentication and form validation, ensuring a secure and user-friendly experience.
 
 ## Authors
 - Job Kiptoo
