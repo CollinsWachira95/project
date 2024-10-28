@@ -16,7 +16,7 @@ const Home = () => {
         </div>
         <div className="home-text-section">
           <h1 className="primary-heading">
-            Your Favourite Food Cooked From Home Served Hot & Fresh Only At The Nosh Navigator
+            Your Favourite Food Cooked From Home Served Hot & Fresh Only At Foodie.
           </h1>
           <p className="primary-text">
             Welcome to the world where your culinary dreams are fulfilled, where you will find healthy meals but most Importantly novishly tasty.
