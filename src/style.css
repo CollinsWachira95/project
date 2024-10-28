@@ -498,3 +498,35 @@
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adding a subtle shadow for depth */
 }
+.recipe-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.category-button.active {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.category-button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}

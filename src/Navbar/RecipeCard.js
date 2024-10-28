@@ -79,41 +79,31 @@ function Recipe() {
   return (
     <div className="recipe-app">
       <NavBar />
-      
-      {/* Single Search Bar */}
-      <div className="search-bar mb-4">
+      <div className="search-bar">
         <input
           type="text"
           placeholder="Enter The Recipe Title"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-lg shadow-sm"
         />
       </div>
-
-      {/* Single Category Filter */}
-      <div className="categories flex flex-wrap gap-2 mb-6">
+      <div className="categories">
         {categories.map((category) => (
           <button
             key={category.id}
             onClick={() => handleCategoryClick(category.id)}
-            className={`px-4 py-2 rounded-lg ${
-              selectedCategory === category.id ? "bg-indigo-600 text-white" : "bg-gray-200 text-gray-700"
+            className={`category-button ${
+              selectedCategory === category.id ? "active" : ""
             }`}
           >
             {category.name}
           </button>
         ))}
       </div>
-
-      {/* Recipe List Display */}
-      <div className="recipe-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="recipe-list">
         {filteredRecipes.map((recipe) => (
-          <div
-            key={recipe.id}
-            className="recipe-card flex flex-col bg-white rounded-lg shadow-lg overflow-hidden p-6 h-full"
-          >
-            <h3 className="text-2xl font-bold mb-2">{recipe.title}</h3>
+          <div key={recipe.id} className="recipe-card p-4 bg-white rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2">{recipe.title}</h3>
             <img
               src={recipe.image_url || "/placeholder.jpg"}
               alt={`Image of ${recipe.title}`}
@@ -167,8 +157,6 @@ function Recipe() {
           </div>
         ))}
       </div>
-
-      {/* Single Form Component */}
       <Form />
     </div>
   );

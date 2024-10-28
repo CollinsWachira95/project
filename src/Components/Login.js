@@ -43,48 +43,57 @@ const Login = () => {
 				throw new Error("Login failed");
 			}
 
-			const data = await response.json();
-			console.log("Logged in user:", data);
-			navigate("/");
+			const { tokens } = await response.json();
+
+			// Check if tokens exist and store them in sessionStorage
+			if (tokens) {
+				sessionStorage.setItem("access_token", tokens.access_token);
+				sessionStorage.setItem("refresh_token", tokens.refresh_token);
+				console.log(
+					"Tokens saved in sessionStorage:",
+					sessionStorage.getItem("access_token")
+				);
+				navigate("/");
+			}
 		} catch (err) {
 			setError(err.message);
 		}
 	};
 
 	return (
-        <>
-        <Navbar />
-		<div className="form-container">
-			<h2>Login</h2>
-			{error && <p style={{ color: "red" }}>{error}</p>}
-			<form className="feedback-form" onSubmit={handleLogin}>
-				<div>
-					<label>Username:</label>
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						className="form-input"
-						required
-					/>
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						className="form-input"
-						required
-					/>
-				</div>
-				<button type="submit" className="form-submit-button">
-					Login
-				</button>
-			</form>
-		</div>
-        <Footer />
-        </>
+		<>
+			<Navbar />
+			<div className="form-container">
+				<h2>Login</h2>
+				{error && <p style={{ color: "red" }}>{error}</p>}
+				<form className="feedback-form" onSubmit={handleLogin}>
+					<div>
+						<label>Username:</label>
+						<input
+							type="text"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+							className="form-input"
+							required
+						/>
+					</div>
+					<div>
+						<label>Password:</label>
+						<input
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							className="form-input"
+							required
+						/>
+					</div>
+					<button type="submit" className="form-submit-button">
+						Login
+					</button>
+				</form>
+			</div>
+			<Footer />
+		</>
 	);
 };
 
